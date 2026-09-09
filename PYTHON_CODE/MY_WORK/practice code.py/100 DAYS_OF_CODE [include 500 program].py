@@ -163,3 +163,97 @@ elif marks >= 50:
 
 elif marks <= 50:
     print("SORRY YOU HAVE NOT CLEAR THIS EXAM, YOUR FAIL!")
+
+
+
+
+
+              # DAY 3 #
+
+
+# CODE 11 / 500 :
+
+# Ek list banao 1 se 10 tak numbers ki.
+# Us list se: (a) sirf even numbers print karo, (b) sabka sum nikalo, (c) sabse bada number nikalo.
+# (bina max() use kiye, loop se).
+
+l1 = [1,2,3,4,5,6,7,8,9,10]
+count = 0
+biggest = l1 [0]
+
+for count in l1 :
+     count += 1
+     if count %2 == 0:
+        print (count)
+
+for num in l1 :
+    count = count + num
+print (count)
+
+for num in l1 :
+    if num >= biggest:
+        biggest = num
+print ("largest value:",num)
+
+
+
+
+
+# CODE 12 / 500 :
+
+# Ek dictionary banao jisme 3 students ke naam (key) aur unke marks (value) ho.
+# Phir: (a) ek student ka naam print karke uske marks nikalo, 
+# (b) sabhi keys print karo, 
+# (c) sabhi values print karo.
+
+dic = {"raza":86,
+       "ayan":88,
+       "akib":92}
+
+print(dic.get("raza"))
+print(dic.keys())
+print(dic.values())
+
+
+
+
+
+# CODE 13 / 500 :
+
+# User se unka naam aur age input lo,
+# aur f-string use karke print karo:
+# "Mera naam <naam> hai aur meri age <age> saal hai."
+
+name = str(input("enter your name:"))
+age = int(input("enter your age"))
+
+print(f"Mera naam {name} hai aur meri age {age} saal hai.")
+
+
+
+
+
+# CODE 14 / 500 :
+
+# Ek function banao square(num) jo number ka square return kare (print nahi).
+# Function ko call karke result ko ek variable mein store karo, phir print karo.
+
+def square(num):
+    return num ** 2
+
+square(5)
+num = square(5)
+print(num)
+
+
+
+
+
+# # CODE 15 / 500 :
+
+# User se ek number lo aur uski multiplication table 1 se 10 tak print karo.
+# (loop use karke).
+
+num = int(input("enter your number:"))
+for i in range(1,11):
+    print(num,"*",i,"=",num*i)
