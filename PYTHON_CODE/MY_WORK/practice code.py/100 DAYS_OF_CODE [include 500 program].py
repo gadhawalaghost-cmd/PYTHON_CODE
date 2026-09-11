@@ -348,3 +348,93 @@ sentence = input("enter a sentence: ")
 words = sentence.split()
 count = len(words)
 print("Number of words in the sentence:", count)
+
+
+
+
+
+              # DAY 5 #
+
+# CODE 21 / 500 :
+
+# Ek dictionary banao jisme 5 items aur unki prices ho 
+# (jaise {"shirt": 500, "jeans": 1200, ...}).
+# Phir: (a) total sum of all prices nikalo, 
+# (b) sabse mehenga item aur uski price print karo, 
+# (c) ek naya item dictionary mein add karo.
+
+items = {"shirt": 500, "jeans": 1200, "shoes": 2000, "hat": 300, "gloves": 200}
+
+print("tottal sum of price", sum(items.values()))
+print("most expensive item:", max(items, key=items.get), "with price:" ,max(items.values()))
+items["socks"] = 100
+print("Updated dictionary:", items)
+
+
+
+
+
+# CODE 22 / 500 :
+
+# User se ek word lo aur check karo ki wo palindrome hai ya nahi,
+# (jaise "madam", "nan" — jo aage se ulta padho toh same rahe).
+
+word = input("enter a word:")
+if word == word[::-1]:
+    print(word, "is a palindrome")
+else:
+    print(word, "is not a palindrome")
+
+
+
+
+
+# CODE 23 / 500 :
+
+# 3 students ki list banao, jisme har student ek dictionary ho 
+# (naam aur marks ke saath). Phir loop use karke har student ka naam aur marks print karo.
+
+l1 = [ {"name": "raza", "marks": 86},
+       {"name": "ayan", "marks": 88},
+        {"name": "akib", "marks": 92}
+        ]
+
+for student in l1 :
+    print("name:", student["name"], "marks:", student["marks"])
+
+
+
+
+
+# CODE 24 / 500 :
+
+# User se ek number input lo aur usse 100 se divide karke result print karo.
+# Agar user 0 input kare (jisse divide by zero error aayega), 
+# toh try-except use karke ek proper error message print karo, program crash na ho.
+
+num = int (input("enter your number:"))
+num1 = num / 100
+ 
+if num == 0:
+    print("Error: Cannot divide by zero.")
+
+else:
+    print(num1)
+
+
+
+
+
+# CODE 25 / 500 :
+
+# Ek function banao power(base, exponent=2) jo base ki exponent power calculate kare.
+# Agar exponent na diya jaaye, toh default square (power 2) calculate ho.
+# Function ko dono tareeke se call karke test karo (with aur without exponent).
+
+def power(base, exponent = 2):
+    result = base ** exponent
+
+    print (f"base={base} exponent={exponent} your answer is:", result )
+
+power(5,)
+
