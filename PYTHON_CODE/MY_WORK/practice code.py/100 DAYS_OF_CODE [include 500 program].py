@@ -545,3 +545,123 @@ print(r)
 
 f1.close
 f2.close
+
+
+
+
+
+
+#               # DAY 7 #
+
+# CODE 31 / 500 :
+
+# Ek class banao Student naam ki, jisme __init__ method ho jo name aur marks set kare.
+# Ek method banao display() jo student ka naam aur marks print kare.
+# Class se ek object banao aur display() call karo.
+
+class student:
+
+    def __init__(self,name,marks):
+        self.name = name
+        self.marks = marks
+
+    def display(self):
+       print("name:",self.name)
+       print("marks:",self.marks)
+
+    
+s1 = student("raza",92)
+s1.display()
+
+
+
+
+
+# CODE 32 / 500 :
+
+# Student class se ek TopperStudent class banao (inherit karke).
+# jisme ek extra method ho award() jo "Congratulations, you got a medal!" print kare.
+# Object banake dono methods (display() aur award()) call karo.
+
+class Student:
+
+    def __init__(self,name,marks):
+        self.name = name
+        self.marks = marks
+
+    def display(self):
+       print("name:",self.name)
+       print("marks:",self.marks)
+
+class Topperstudent(Student):
+
+    def award (self,):
+        print("congratulations, you got a medal!")
+
+
+
+
+topper = Topperstudent("raza",92)
+topper.award()
+topper.display()
+
+
+
+
+
+# CODE 33 / 500 :
+
+# 1 se 10 tak numbers ki ek dictionary banao jisme key = number aur value = uska square ho
+# — dictionary comprehension use karke (ek line mein), normal loop nahi.
+
+square = {num: num ** 2 for num in range(1,11)}
+print(square)
+
+
+
+
+
+# CODE 34 / 500 :
+
+# Ek function banao total_sum(*args) jo jitne bhi numbers diye jaayein,
+# unka sum return kare (chahe 2 numbers ho ya 10). 
+# Function ko alag-alag counts ke numbers se call karke test karo.
+
+def total_sum (*args):
+
+    total = 0
+    for num in args:
+        total = total + num
+    return total
+    
+print(total_sum(2, 3))
+print(total_sum(1, 2, 3, 4, 5))
+print(total_sum(10))
+
+
+
+
+
+# CODE 35 / 500 :
+
+# Ek custom exception class banao NegativeNumberError (jo Exception se inherit kare).
+# Ek function banao check_number(num) jo agar number negative ho toh ye custom exception raise kare,
+# warna number print kare. 
+# try-except use karke isse handle karo.
+
+class negativenumbererror(Exception):
+    pass
+
+def check_number(num):
+    if num < 0 :
+        print("negative numbers are not allowed !!")
+
+    else :
+         print(num)
+
+try:
+
+    check_number(-5)
+
+except negativenumbererror as e:
+    print("error granted:", e)
