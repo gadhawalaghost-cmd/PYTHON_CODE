@@ -598,9 +598,6 @@ class Topperstudent(Student):
     def award (self,):
         print("congratulations, you got a medal!")
 
-
-
-
 topper = Topperstudent("raza",92)
 topper.award()
 topper.display()
@@ -665,3 +662,141 @@ try:
 
 except negativenumbererror as e:
     print("error granted:", e)
+
+
+
+
+
+
+#               # DAY 8 #
+
+
+# CODE 36 / 500 :
+
+# Student class use karo (Day 7 wali).
+# 3 students ke objects banao alag-alag marks ke saath. 
+# Ek loop likho jo teeno students mein se sabse zyada marks wale student ka naam print kare.
+
+class student:
+
+    def __init__(self,name,marks):
+        self.name = name
+        self.marks = marks
+
+    def display(self):
+       print("name:",self.name)
+       print("marks:",self.marks)
+
+    
+s1 = student("raza",92)
+s2 = student("ayan",88)
+s3 = student ("akib",90)
+
+students = [s1 , s2, s3]
+
+topper = students[0]
+
+for student in students :
+    if student.marks > student.marks:
+        topper = student
+
+print("the top 1 is :",topper.name)
+
+
+
+
+
+# CODE 37 / 500 :
+
+# Ek function banao student_info(*args, **kwargs) jo args ke andar diye gaye normal values print kare,
+# aur kwargs ke andar diye gaye key-value pairs bhi print kare.
+# Function ko is tarah call karo: student_info("Raza", 25, city="Himatnagar", course="Python").
+
+def student_info(*args,**kwargs):
+    print("args value:")
+
+    for value in args:
+        print("-",value)
+
+    print("kwargs values:")
+    for key,value in kwargs.items() :
+        print("-", key,":",value)
+
+student_info("raza",25, city="himatnager", course="python")
+
+
+
+
+
+# CODE 38 / 500 :
+
+# Ek function banao factorial(n) jo recursion use karke (loop nahi) kisi number ka factorial nikale.
+# (Hint: factorial(5) = 5 * factorial(4), aur factorial(0) = 1.)
+
+def factorial(n): 
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
+
+print(factorial(5))
+
+
+
+
+
+# CODE 39 / 500 :
+
+# Ek function banao jo user se ek number input le aur usse 10 se divide kare.
+# try-except-finally use karo — except mein ValueError handle karo,
+# aur finally block mein hamesha "Process complete hua" print karo (chahe error aaye ya na aaye).
+
+def devided_by_ten():
+
+    try:
+     num = int(input("enter your number:"))
+     result = 10 / num
+     print("result:",result)
+
+    except ValueError:
+     print("only numbers are allowd! ")
+
+    except ZeroDivisionError:
+      print("number zero are not allowd!")
+
+    finally:
+     print("process done.")
+
+devided_by_ten()
+
+
+
+
+
+# CODE 40 / 500 :
+
+# User se ek sentence lo.
+# Us sentence se: (a) saare vowels (a, e, i, o, u) count karo, 
+# (b) sentence ko title case mein convert karo (.title()), 
+# (c) check karo sentence mein koi number hai ya nahi (.isdigit() ya digit check karke).
+
+sentence = (input("enter your sentence:"))
+
+vowels = "AEIOUaeiou"
+vowels_count = 0
+
+for char in sentence:
+    if char in vowels:
+        vowels_count =+ 1
+
+title_case = sentence.title()
+
+has_digit = False
+for char in sentence:
+    if char.isdigit():
+        has_digit = True
+
+
+print("vowels count:",vowels_count)
+print("titel:",title_case)
+print("numbers in sentence:",has_digit)
