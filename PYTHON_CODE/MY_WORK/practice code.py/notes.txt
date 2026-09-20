@@ -1,1 +1,3 @@
-pythone seehna maza aa raha hai
+it's Amaizing to learn python
+my second line
+my third line

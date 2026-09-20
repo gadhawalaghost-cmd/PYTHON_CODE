@@ -1233,21 +1233,149 @@
 
 
 
-# CODE 45 /  500 :
+# # CODE 45 /  500 :
 
-# Ek simple decorator function banao timer_info jo kisi bhi function ke call hone se pehle,
-# "Function shuru ho raha hai..." aur baad mein "Function complete ho gaya" print kare. 
-# Ek simple function (jaise greet()) banao aur usse @timer_info decorator se decorate karo.
+# # Ek simple decorator function banao timer_info jo kisi bhi function ke call hone se pehle,
+# # "Function shuru ho raha hai..." aur baad mein "Function complete ho gaya" print kare. 
+# # Ek simple function (jaise greet()) banao aur usse @timer_info decorator se decorate karo.
 
-def timer_info(func):
-    def wrapper ():
-        print("function starting...")
-        func()
-        print("function complited.")
-    return wrapper
+# def timer_info(func):
+#     def wrapper ():
+#         print("function starting...")
+#         func()
+#         print("function complited.")
+#     return wrapper
 
-@timer_info
-def greet():
-    print("hello, raza!")
+# @timer_info
+# def greet():
+#     print("hello, raza!")
 
-greet()
+# greet()
+
+
+
+
+
+# #               # DAY 12 #
+
+
+# # CODE 46 / 500 :
+
+# # Ek class banao Rectangle jisme __init__ mein length aur width set ho. 
+# # Ek @property method banao area jo automatically length × width calculate kare, 
+# # (bina brackets () ke call ho, jaise rect.area, na ki rect.area()).
+
+# class rectangle():
+
+#     def __init__(self,length,width):
+#         self.length = length
+#         self.width = width
+
+#     @property
+#     def area (self,):
+#         return self.length * self.width
+
+
+# rect = rectangle(10,5)
+# print(rect.area)
+
+
+
+
+
+# # CODE 47 / 500 :
+
+# # Do classes banao Flyable (ek method fly() jo "Can fly" print kare) 
+# # aur Swimmable (ek method swim() jo "Can swim" print kare). 
+# # Ek class Duck banao jo dono se inherit kare. 
+# # Object banake dono methods call karo.
+
+# class flyable:
+#     def fly(self):
+#         print("can fly")
+
+# class swimmeble:
+#     def swim(self):
+#         print("can swim")
+
+# class duck(flyable,swimmeble):
+#     pass
+
+
+# bird = duck()
+# bird.fly()
+# bird.swim()
+
+
+
+
+
+# # CODE 48 / 500 :
+
+# # File Handling Advanced — File se data read karke, 
+# # uske total lines count karo aur total words count karo (poori file ka), 
+# # with statement use karke (jaise Day 6 mein seekha tha).
+
+# with open(r"C:\git_repo\PYTHONE_CODE\PYTHON_CODE\MY_WORK\practice code.py\notes.txt","w") as f :
+
+#     f.write("it's Amaizing to learn python\n")
+#     f.write("my second line\n")
+#     f.write("my third line\n")
+
+# with open(r"C:\git_repo\PYTHONE_CODE\PYTHON_CODE\MY_WORK\practice code.py\notes.txt","r") as f :
+#     content = f.read()
+
+# lines = content.split("\n")
+# lines = [line for line in lines if line != "" ]
+
+# total_line = len(lines)
+
+# words = content.split()
+# total_words = len(words)
+
+# print("total lines :",total_line)
+# print("total words :", total_words)
+
+
+
+
+
+# # CODE 49 / 500 :
+
+# # Ek function banao jo try-except ke andar ek error catch kare, 
+# # phir usi error ko ek custom message ke saath dobara raise kare,
+# # (raise keyword dobara use karke, except block ke andar).
+
+# def zerodivision (num):
+#     try:
+#         result =10 / num
+
+#     except ZeroDivisionError:
+#         raise ZeroDivisionError ("you cant calculate with zero!")
+
+# try:
+#     zerodivision(0)
+
+# except ZeroDivisionError as e:
+#     print("error founded... \n",e)
+
+
+
+
+
+# CODE 50 / 500 :
+ 
+# Ek class banao MathHelper jisme ek @staticmethod ho add(a, b),
+# jo dono numbers ka sum return kare — is method ko object banaye bina, 
+# seedha MathHelper.add(5, 3) se call karo.
+
+
+class MathHelper:
+    @staticmethod
+
+    def add (a,b):
+        return a+b
+
+
+result = MathHelper.add(5,3)
+print(result)
