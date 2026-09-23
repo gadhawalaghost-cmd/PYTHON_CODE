@@ -1363,19 +1363,364 @@
 
 
 
-# CODE 50 / 500 :
+# # CODE 50 / 500 :
  
-# Ek class banao MathHelper jisme ek @staticmethod ho add(a, b),
-# jo dono numbers ka sum return kare — is method ko object banaye bina, 
-# seedha MathHelper.add(5, 3) se call karo.
+# # Ek class banao MathHelper jisme ek @staticmethod ho add(a, b),
+# # jo dono numbers ka sum return kare — is method ko object banaye bina, 
+# # seedha MathHelper.add(5, 3) se call karo.
 
 
-class MathHelper:
-    @staticmethod
+# class MathHelper:
+#     @staticmethod
 
-    def add (a,b):
-        return a+b
+#     def add (a,b):
+#         return a+b
 
 
-result = MathHelper.add(5,3)
-print(result)
+# result = MathHelper.add(5,3)
+# print(result)
+
+
+
+
+
+# #               # DAY 13 #
+
+
+# CODE 51 / 500 :
+
+# # Student class use karo. 
+# # Ek @classmethod banao from_string(cls, data_string) jo ek string jaise "Raza,85" ko le kar 
+# # (comma se split karke) naam aur marks nikale, 
+# # aur ek naya Student object bana kar return kare. 
+# # Object ko Student.from_string("Raza,85") se banao.
+
+# class student:
+
+#     def __init__ (self,name,marks):
+#         self.name = name
+#         self.marks = marks
+
+#     @classmethod
+#     def from_string(cls,data_string):
+#         name,marks = data_string.split(",")
+#         marks = int(marks)
+#         return cls (name,marks)
+
+# s1 = student("raza,93")
+# print(s1.name)
+# print(s1.marks)
+
+
+
+
+
+# # CODE 52 / 500 :
+
+# # Student class mein ek __str__ method add karo jo object ko print() karte waqt,
+# # ek proper readable string dikhaye (jaise "Student: Raza, Marks: 85") — 
+# # normal object print karne se <__main__.Student object at 0x...> jaisa ajeeb output aata hai, 
+# # __str__ isse fix karta hai.
+
+# class student:
+
+#     def __init__(self,name,marks,):
+#         self.name = name
+#         self.marks = marks
+
+#     def __str__(self):
+#         return f"student: {self.name},marks : {self.marks}"
+
+# s1 = student("raza", 93)
+# print(s1)
+
+
+
+
+
+
+# # CODE 53 / 500 :
+
+# # Ek class banao Point jisme x aur y coordinates ho. 
+# # __add__ method banao jisse do Point objects ko + operator se jod sakein 
+# # (jaise p1 + p2 se naya Point ban jaye jisme x aur y dono add ho jayein).
+
+# class point :
+#     def __init__ (self,x,y):
+#         self.x = x
+#         self.y = y
+
+#     def __add__(self,other):
+#         new_x = self.x + other.x
+#         new_y = self.x + other.y
+#         return point(new_x,new_y)
+
+#     def __str__(self):
+#         return f"point {self.x},{self.y}"
+
+# p1 = point(5,11)
+# p2 = point(6,12)
+
+# p3 = p1 + p2 
+
+# print(p3)
+
+
+
+
+
+# # CODE 53 / 500 :
+
+# # Ek class banao CountUpTo jo limit leta ho, 
+# # aur for loop mein use hone par 1 se limit tak numbers ek-ek karke de 
+# # (bina yield ke — __iter__ aur __next__ methods use karke).
+
+# class CountUpTo:
+
+#     def __init__(self,limit):
+#         self.limit = limit
+#         self.current = 1
+
+#     def __iter__(self):
+#         return self
+
+#     def __next__ (self):
+#         if self.current > self.limit:
+#             raise StopIteration
+#         value = self.current
+#         self.current = self.current + 1
+#         return value
+
+
+# counter = CountUpTo(5)
+
+# for num in counter:
+#     print (num)
+
+
+
+
+
+# # CODE 55 / 500 : 
+
+# # abc module use karke ek abstract class banao Shape jisme ek abstract method area() ho 
+# # (jo khud kuch na kare, bas define ho). 
+# # Do classes banao Circle aur Square jo Shape se inherit karke apna-apna area() implement karein.
+
+# from abc import ABC, abstractmethod
+
+# class shape (ABC):
+#     @abstractmethod
+#     def area (self):
+#         pass
+
+# class circle (shape):
+#     def __init__(self,radius):
+#         self.radius = radius
+
+#     def area(self):
+#         return 3.14 * self.radius * self.radius
+
+
+# class square(shape):
+#     def __init__(self,side):
+#         self.side = side
+
+#     def area(self):
+#         return self.side* self.side
+
+# c1 = circle(5)
+# s1 = square(4)
+
+# print("circle area :" ,c1.area())
+# print("square are :" ,s1.area())
+
+
+
+
+
+# #               # DAY 14 #
+
+# # CODE 56 / 500 :
+
+# # Rectangle class use karo (Day 12 wali).
+# # area ko @property banao jaise pehle. Ab ek naya property length banao jisme ek @length.setter bhi ho 
+# # — jo check kare ki naya length negative na ho 
+# # (agar negative diya toh error message print kare, warna update kare).
+
+
+# class Rectangle():
+
+#     def __init__(self,length,width):
+#         self.length = length
+#         self.width = width
+
+#     @property
+#     def length (self,):
+#         return self._length
+
+#     @length.setter
+#     def length (self,value):
+#         if value < 0:
+#             print("you coud not take nagative value (-)")
+
+#         else:
+#             self._length = value
+
+#     @property
+#     def area (self):
+#         return self._length * self.width
+
+# rect = Rectangle(10, 5)
+# print(rect.area)
+
+# rect.length = 20
+# print(rect.area)
+
+# rect.length = -5
+# print(rect.area)
+
+
+
+
+
+# # CODE 57 / 500 :
+
+# # Ek class banao FlexibleData jisme __init__(self, *args, **kwargs) ho-
+# # jo bhi normal values di jayein args mein store ho, 
+# # jo bhi named values di jayein kwargs mein store ho. 
+# # Ek method show() banao jo dono print kare.
+
+# class FlexibleData:
+#     def __init__(self,*args,**kwargs):
+#         self.args = args
+#         self.kwargs = kwargs
+
+#     def show(self):
+#         print("args =",self.args)
+#         print("kwargs =",self.kwargs)
+
+# data = FlexibleData("raza",25, city="himatnagar",cource="python")
+# data.show()
+
+
+
+
+
+# # CODE 58 / 500 :
+
+# # Ek class banao StringBuilder jisme text empty string se shuru ho. 
+# # Methods banao add(word) (text mein word jode) aur upper() (text ko uppercase kare), 
+# # dono methods self return karein taaki tum builder.add("hello").add(" world").upper() jaise chain kar sako.
+
+# class StringBuilder:
+
+#     def __init__(self):
+#        self.text = ""
+
+#     def add(self,word):
+#         self.text = self.text + word
+#         return self
+
+#     def upper(self):
+#         self.text = self.text.upper ()
+#         return self
+
+# builder = StringBuilder()
+# result = builder.add("hello").add(" world").upper()
+
+# print(result.text)
+
+
+
+
+
+# # CODE 59 / 500 :
+
+# # Ek custom class banao FileOpener jo with statement ke saath use ho sake,
+# # (jaise with FileOpener("notes.txt") as f:),
+# # __enter__ aur __exit__ methods use karke — bina Python ke built-in open() ke with support ke, 
+# # apna khud ka banao.
+
+# class FileOpener:
+#     def __init__(self, filename, mode="r"):
+#         self.filename = filename
+#         self.mode = mode
+
+#     def __enter__(self):
+#         self.file = open(self.filename, self.mode)
+#         print("File khul gayi")
+#         return self.file
+
+#     def __exit__(self, exc_type, exc_value, traceback):
+#         self.file.close()
+#         print("File band ho gayi")
+
+
+# with FileOpener("notes.txt", "w") as f:
+#     f.write("Python seekhna maza aa raha hai")
+
+# with FileOpener("notes.txt", "r") as f:
+#     content = f.read()
+
+
+
+
+
+# CODE 60 / 500 :
+
+# Ek "Library System" banao: Book class (naam, author, available status), 
+# aur Library class jisme books ki list ho. 
+# Methods: add_book(book), borrow_book(name),
+# (agar available ho toh status False karo, warna "Not available" print karo), 
+# return_book(name) (status True karo).
+
+class Book:
+    def __init__(self, name, author):
+        self.name = name
+        self.author = author
+        self.available = True
+
+
+class Library:
+    def __init__(self):
+        self.books = []
+
+    def add_book(self, book):
+        self.books.append(book)
+        print(book.name, "library mein add ho gayi")
+
+    def borrow_book(self, name):
+        for book in self.books:
+            if book.name == name:
+                if book.available:
+                    book.available = False
+                    print(name, "issue ho gayi")
+                else:
+                    print(name, "abhi available nahi hai")
+                return
+        print(name, "library mein hai hi nahi")
+
+    def return_book(self, name):
+        for book in self.books:
+            if book.name == name:
+                book.available = True
+                print(name, "wapas aa gayi")
+                return
+        print(name, "library mein hai hi nahi")
+
+
+# --- Test karo ---
+library = Library()
+
+b1 = Book("Python Basics", "Raza")
+b2 = Book("Data Science", "Aman")
+
+library.add_book(b1)
+library.add_book(b2)
+
+library.borrow_book("Python Basics")
+library.borrow_book("Python Basics")   # dobara try karo, available nahi hogi
+
+library.return_book("Python Basics")
+library.borrow_book("Python Basics")   
