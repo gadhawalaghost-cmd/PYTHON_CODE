@@ -1724,3 +1724,184 @@ library.borrow_book("Python Basics")   # dobara try karo, available nahi hogi
 
 library.return_book("Python Basics")
 library.borrow_book("Python Basics")   
+
+
+
+
+
+#               # DAY 15 #
+
+# CODE 61 / 500 :
+
+# enum module use karke ek Enum class banao Status jisme values ho PENDING, ACTIVE, COMPLETED. 
+# Ek function banao check_status(status) jo Enum ke basis pe alag message print kare.
+
+from enum import Enum
+
+class Status (Enum):
+
+    PENDING = 1
+    ACTIVE = 2
+    COMPLETED = 3
+
+def check_satatus(status):
+    if status == status.PENDING:
+        print("your work is pending...")
+
+    elif status == status.ACTIVE:
+        print("your work is activated...")
+
+    elif status == status.COMPLETED:
+        print("your work is complite.")
+
+check_satatus(Status.ACTIVE)
+
+
+
+
+
+# CODE 62 / 500 :
+
+# Ek class banao StringUtils jisme 3 @staticmethod ho: 
+# is_palindrome(text), count_vowels(text), reverse_text(text). 
+# Object banaye bina, seedha StringUtils.method_name(...) se test karo.
+
+class StringUtils:
+
+    @staticmethod
+    def is_palindrome(text):
+        return text == text[ :: -1]
+
+    @staticmethod
+    def count_vowels(text):
+        vowels = "aeiouAEIOU"
+        count = 0
+        for char in text:
+            if char in vowels:
+                count = count + 1
+        return count
+
+    @ staticmethod
+    def revers_text(text):
+        return text [ :: -1]
+
+
+print(StringUtils.is_palindrome("madam"))
+print(StringUtils.count_vowels("hello world"))
+print(StringUtils.revers_text("pythone"))
+
+
+
+
+
+# CODE 63 / 500 :
+
+# Ek class banao Car jiske andar ek nested class ho Engine (jisme horsepower attribute ho). 
+# Car ke __init__ mein ek Engine object banao aur use self.engine mein store karo. 
+# Object banake car.engine.horsepower access karo.
+
+class Car:
+    class Engine:
+        def __init__(self,horsepower):
+            self.horsepower = horsepower
+
+    def __init__(self, name,horsepower):
+            self.name = name
+            self.engine = self.Engine(horsepower)
+
+car = Car("honda city ",120)
+
+print(car.name)
+print(car.engine.horsepower)
+
+
+
+
+
+# CODE 64 / 500 :
+
+# Point class use karo (Day 13 wali). 
+# Ek __eq__ method add karo jisse do Point objects ko == se compare kar sako 
+# (jaise p1 == p2 check kare ki dono ke x aur y same hain ya nahi).
+
+class point :
+    def __init__ (self,x,y):
+        self.x = x
+        self.y = y
+
+
+    def __eq__(self,other):
+        return self.x == other.x and self.y == other.y
+    
+
+    def __str__(self):
+        return f"point {self.x},{self.y}"
+
+    
+
+p1 = point(5,11)
+p2 = point(6,12)
+p3 = point(12,13)
+
+print(p1 == p2)
+print(p1 == p3)
+
+
+
+
+
+
+# CODE 65 / 500 :
+
+# Mini Project 3 
+# — Ek "Inventory Management System" banao: 
+# Product class (naam, price, quantity). 
+# Inventory class jisme products ki list ho. 
+# Methods: 
+# add_product(), 
+# total_value() (sabhi products ki price × quantity ka sum), 
+# low_stock(threshold) (jo products threshold se kam quantity ke hain unke naam print kare).
+
+class product:
+    def __init__ (self,name,price,quantity):
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+
+class inventory:
+    def __init__(self):
+        self.product = []
+
+    def add_product(self,product):
+        self.product.append(product)
+
+    def total_value(self):
+        total = 0
+        for product in self.product:
+            total += product.price * product.quantity
+        return total
+
+    def low_stock(self,threshold):
+        print(f"products with quantity less then {threshold}:")
+        found = False
+
+        for product in self.product:
+            if product.quantity < threshold:
+                print(product.name)
+                found = True
+
+        if not found:
+                print("no low stock product found.")
+
+
+inventory = inventory()
+
+
+inventory.add_product(product("Laptop", 50000, 5))
+inventory.add_product(product("Mouse", 500, 20))
+inventory.add_product(product("Keyboard", 1500, 3))
+inventory.add_product(product("Monitor", 12000, 2))
+
+print("tottal inventory values : ", inventory.total_value())
+
+inventory.low_stock(5)
