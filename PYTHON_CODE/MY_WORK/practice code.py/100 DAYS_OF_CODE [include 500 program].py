@@ -1905,3 +1905,168 @@ inventory.add_product(product("Monitor", 12000, 2))
 print("tottal inventory values : ", inventory.total_value())
 
 inventory.low_stock(5)
+
+
+
+
+
+#               # DAY 16 #
+
+# CODE 66 / 500 :
+
+# Point class use karo (jisme x, y hain). 
+# Ek __lt__ method banao jo do Points ko distance from origin (0,0) ke basis pe compare kare 
+# (< operator use karke). Ek list of Points banao aur sorted() se distance ke hisaab se sort karo.
+
+class Point :
+    def __init__ (self,x,y):
+        self.x = x
+        self.y = y
+
+
+    def __lt__(self,other):
+       self_distunce = (self.x ** 2 + self.y **2) **0.5
+       other_distunce = (other.x ** 2 + other.y ** 2)**0.5
+       return self_distunce < other_distunce
+
+    def __str__(self):
+        return f"point {self.x},{self.y}"
+
+    
+
+Points = [Point(2,2),Point(4,5),Point(6,8),Point(5,2)]
+
+sorted_points = sorted(Points)
+
+for p in sorted_points:
+    print (p)
+
+
+
+
+
+# CODE 67 / 500 :
+
+# Ek Address class banao (city, pincode). 
+# Ek Person class banao jisme name ho aur ek Address object bhi attribute ki tarah ho 
+# (self.address = Address(...)). Object banake person.address.city access karo. 
+# (Ye Day 15 wale nested class se alag hai — yahan dono classes bahar-bahar independent hain, 
+# bas ek doosre ke andar object ki tarah use hoti hai.)
+
+class Address :
+    def __init__(self,city,pincode):
+        self.city = city
+        self.pincode = pincode
+
+class Person:
+        def __init__(self,name,city,pincode):
+            self.name = name
+            self.address = Address(city,pincode)
+
+
+person = Person("raza","himatnagar","383001")
+
+print(person.name)
+print(person.address.city)
+print(person.address.pincode)
+
+
+
+
+
+
+# CODE 68 / 500 :
+
+# Ek class banao Employee jisme ek class variable ho company_name ="TechCorp"(sabhi objects ke liye same), 
+# aur ek instance variable name ho (har object ka alag). 3 employees banao, 
+# dikhao ki company_name sabka same hai lekin name sabka alag hai.
+
+class Employee :
+    company_name = "TechCorp"
+
+    def __init__(self,name):
+        self.name=name
+
+e1 = Employee("raza")
+e2 = Employee("ayan")
+e3 = Employee("akib")
+
+print(e1.company_name, "-", e1.name)
+print(e2.company_name, "-", e2.name)
+print(e3.company_name, "-", e3.name)
+
+
+
+
+
+# CODE 69 / 500 :
+
+# Sab Ek Saath — Ek function banao jo user se number le, usse 2 se multiply kare. 
+# try mein input lo, except ValueError handle karo, 
+# else mein result print karo (agar koi error na aaya ho), 
+# finally mein "Input process complete" print karo.
+
+def sum():
+
+    try:
+        num =int(input("enter your number : "))
+
+    except ValueError:
+        print("always enter a number")
+
+    else:
+         result = num * 2
+         print("result = ",result)
+
+    finally:
+        print("input process complited")
+
+sum()
+
+
+
+
+
+# CODE 70 / 500 :
+
+# Ek "Employee Payroll System" banao: 
+# Employee class (naam, basic_salary, department). 
+# Method calculate_salary() jo department ke hisaab se bonus de, 
+# (jaise "Sales" department ko 10% extra, baaki ko 5%). 
+# List of employees banao, sabki final salary print karo, 
+# aur sabse zyada kamane wale employee ka naam batao.
+
+class Employees :
+    def __init__(self,name,basic_sallary,department):
+        self.name = name
+        self.basic_sallary = basic_sallary
+        self.department = department
+
+    def calculate_salary(self):
+        if self.department == "seles":
+            bonus = self.basic_sallary * 10 / 100
+
+        else:
+            bonus = self.basic_sallary * 5 / 100
+
+        final_sallary = self.basic_sallary + bonus
+        return final_sallary
+
+employees = [
+    Employees("raza",30000,"sales"),
+    Employees("ayan",35000,"IT"),
+    Employees("akib",40000,"HR")
+]
+
+topper_name = ""
+topper_salary = 0
+
+for emp in employees:
+    salary = emp.calculate_salary()
+    print(emp.name, "-", "Final Salary:", salary)
+
+    if salary > topper_salary:
+        topper_salary = salary
+        topper_name = emp.name
+
+print("\nmost salary persion is :", topper_name, "-", topper_salary)
