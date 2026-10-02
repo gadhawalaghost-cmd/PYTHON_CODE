@@ -1,6 +1,7 @@
  
 #                 # [DAY 1] #
 
+
 # # CODE 1 / 500:
 
 # # Ek program likho jo apna 
@@ -176,6 +177,7 @@
 #               # DAY 3 #
 
 
+
 # # CODE 11 / 500 :
 
 # # Ek list banao 1 se 10 tak numbers ki.
@@ -270,6 +272,7 @@
 # #               # DAY 4 #
 
 
+
 # # CODE 16 / 500 :
 
 # # Nested Loops — for loop ke andar for loop use karke ye pattern print karo:
@@ -362,6 +365,7 @@
 #               # DAY 5 #
 
 
+
 # # CODE 21 / 500 :
 
 # # Ek dictionary banao jisme 5 items aur unki prices ho 
@@ -451,6 +455,7 @@
 
 
 #               # DAY 6 #
+
 
 # # CODE 26 / 500 :
 
@@ -552,6 +557,7 @@
 
 
 # #               # DAY 7 #
+
 
 # # CODE 31 / 500 :
 
@@ -1115,6 +1121,7 @@
 
 # #               # DAY 11 #
 
+
 # # CODE 51 / 500 :
 
 # # BankAccount class use karo (Day 9 wali). 
@@ -1259,6 +1266,7 @@
 # #               # DAY 12 #
 
 
+
 # # CODE 56 / 500 :
 
 # # Ek class banao Rectangle jisme __init__ mein length aur width set ho. 
@@ -1385,6 +1393,7 @@
 
 
 # #               # DAY 13 #
+
 
 
 # # CODE 61 / 500 :
@@ -1540,6 +1549,7 @@
 
 
 # #               # DAY 14 #
+
 
 # # CODE 66 / 500 :
 
@@ -1731,6 +1741,7 @@
 
 # #               # DAY 15 #
 
+
 # # CODE 71 / 500 :
 
 # # enum module use karke ek Enum class banao Status jisme values ho PENDING, ACTIVE, COMPLETED. 
@@ -1911,6 +1922,7 @@
 
 
 # #               # DAY 16 #
+
 
 # # CODE 76 / 500 :
 
@@ -2256,6 +2268,7 @@ print("Highest expense:", top["title"], "-", top["amount"])
 #               # DAY 18 #
 
 
+
 # CODE 86 / 500 :
 
 # Ek function banao add_three(a, b, c) jo teeno ka sum return kare. 
@@ -2389,3 +2402,111 @@ class Quiz:
 # Create object and start quiz
 quiz = Quiz()
 quiz.take_quiz()
+
+
+
+
+
+#               # DAY 19 #
+
+
+# CODE 91 / 500 :
+
+# Ek 3x3 matrix (list of lists) banao list comprehension se, 
+# jisme values 1 se 9 tak ho (jaise [[1,2,3],[4,5,6],[7,8,9]]). 
+# Phir ek aur list comprehension se is matrix ko flatten karo 
+# (sabko ek single list mein convert karo: [1,2,3,4,5,6,7,8,9]).
+
+matrix = [[row * 3 + col +1 for col in range(3)]for row in range(3)]
+print(matrix)
+
+flat = [num for row in matrix for num in row ]
+print(flat)
+
+
+
+
+
+# CODE 92 / 500 :
+
+# Ek list of numbers lo. any() use karke check karo koi bhi number negative hai kya. 
+# all() use karke check karo sabhi numbers positive hain kya.
+
+numbers = [5,-3,2,-2,0,7]
+
+negative = any(num <0 for num in numbers)
+posetive = all(num >0 for num in numbers)
+
+print("nagative values in numbers :",negative)
+print("posetiv values in numbers :", posetive)
+
+
+
+
+
+# CODE 93 / 500 :
+
+# strip(), join(), startswith() — User se ek sentence lo 
+# (jisme aage-peeche extra spaces ho sakte hain). 
+# .strip() se extra spaces hatao.
+# Words ko "-"" se join karke ek naya string banao (jaise "hello-world-python"). 
+# Check karo ye string kisi specific letter se start hoti hai ya nahi (.startswith()).
+
+sentence = input("enter any sentence(you cane use space) :")
+
+word = sentence.strip()
+
+value = word.split()
+joined = "-".join(value)
+
+print("word :", word)
+print("joined :", joined)
+print("starting with 'h' :", joined.startswith("h"))
+
+
+
+
+
+# CODE 94 / 500 :
+
+# Ek number lo, ternary operator use karke (result = "Even" if num % 2 == 0 else "Odd" jaisa pattern) 
+# ek hi line mein check karo even hai ya odd — normal if-else 4 lines ki jagah.
+
+num = int(input("enter number. :"))
+
+result = "Even" if num % 2 == 0 else "Odd"
+
+print(result)
+
+
+
+
+
+# CODE 95 / 500 :
+
+# Ek function banao check_password_strength(password) jo check kare: 
+# (a) length kam se kam 8 ho, 
+# (b) kam se kam ek number ho, 
+# (c) kam se kam ek uppercase letter ho, 
+# (d) kam se kam ek special character ho (!@#$% mein se koi). 
+# Har condition ke basis pe "Weak", "Medium", ya "Strong" print kare.
+
+def check_password_strength(password):
+    has_number = any(char.isdigit() for char in password)
+    has_upper = any(char.isupper() for char in password)
+    has_special = any(char in "!@#$%" for char in password)
+    is_long_enough = len(password) >= 8
+
+    conditions_met = sum([has_number, has_upper, has_special, is_long_enough])
+
+    if conditions_met == 4:
+        return "Strong"
+    elif conditions_met >= 2:
+        return "Medium"
+    else:
+        return "Weak"
+
+
+print(check_password_strength("abc123"))          
+print(check_password_strength("Abc12345"))         
+print(check_password_strength("Abc@12345"))        
