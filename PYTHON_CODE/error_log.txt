@@ -1,0 +1,6 @@
+Error: division by zero
+Error: division by zero
+Error: division by zero
+Error: division by zero
+Error: division by zero
+Error: division by zero

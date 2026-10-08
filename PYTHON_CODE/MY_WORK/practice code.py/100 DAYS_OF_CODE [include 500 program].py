@@ -2510,3 +2510,455 @@ def check_password_strength(password):
 print(check_password_strength("abc123"))          
 print(check_password_strength("Abc12345"))         
 print(check_password_strength("Abc@12345"))        
+
+
+
+
+
+#               # DAY 20 # 
+
+
+# CODE 96 / 500 :
+
+# re module use karke ek function banao jo check kare diya gaya email valid format mein hai ya nahi. 
+# (basic pattern: kuch letters, @, phir kuch letters, ., phir kuch letters).
+
+import re
+
+email = "moraza@gmail.com"
+pattern = r"^[\w.]+@[\w]+\.[a-z]+$"
+
+if re.match(pattern,email):
+    print("valid Email")
+else:
+    print("invalid Email!")
+
+
+
+
+
+# CODE 97 / 500 :
+
+# Aaj ki date print karo. Phir ek future date (jaise tumhara birthday) set karo,
+# aur calculate karo ki kitne din baaki hain.
+
+from datetime import datetime
+
+date = datetime.now()
+Bday = datetime(2026,11,5)
+
+diff = Bday - date
+
+print(diff.days,"days remain")
+
+
+
+
+
+# CODE 98 / 500 :
+
+# Same values (1, 2, 2, 3) se ek list, ek tuple, aur ek set banao. 
+# Teeno print karo aur dekhna farak kya aata hai (especially duplicates ka).
+
+list = [1,2,2,3]
+tuple = (1,2,2,3)
+set = {1,2,2,3}
+
+print(list)
+print(tuple)
+print(set)
+
+list[0] = 100
+print (list)
+
+
+
+
+
+# CODE 99 / 500 :
+
+# copy module use karke ek nested list (list ke andar list) ki shallow copy aur deep copy banao. 
+# Original list mein change karke dekhna dono copies pe kya asar padta hai.
+
+import copy
+
+original = [[1,2],[3,4]]
+shallow = copy.copy(original)
+deep = copy.deepcopy(original)
+
+original[0][0]= 999
+
+print(shallow)
+print(deep)
+
+
+
+
+# CODE 100 / 500 :
+
+# Mini Project — Ek ContactBook class banao jisme dictionary ho. 
+# Methods: add_contact(name, number), search_contact(name), delete_contact(name).
+
+class ContectBook :
+    def __init__(self):
+      self.contects = {}
+
+    def add_contect (self,name,number):
+       self.contects[name] = number
+       print(name,"- name Add successfully")
+
+    def search_contect(self,name):
+       if name in self.contects:
+          print (name, ":" , self.contects[name])
+       else:
+           print(name,"- name not found!")
+
+    def delete_contect(self,name):
+       if name in self.contects:
+            del self.contects[name]
+            print(name,"- name delete successfully")
+       else:
+          print(name,"not found")
+
+book = ContectBook()
+book.add_contect("raza","7548987629")
+book.search_contect("raza")
+book.delete_contect("raza")
+book.search_contect("raza")
+
+
+
+
+
+#               # DAY 21 # 
+
+
+# CODE 101 / 500 :
+
+# threading module use karke ek function ko alag thread mein chalao jo 1 se 3 tak numbers print kare,
+# (har number ke beech 1 second ka gap).
+
+import threading
+import time 
+
+def print_numbers():
+    for i in range(3):
+        print (i)
+        time.sleep(1)
+
+t = threading.Thread(target=print_numbers)
+t.start()
+t.join()
+print("Thread complete")
+
+
+
+
+
+# CODE 102 / 500 :
+
+# os module use karke apni current working directory print karo, 
+# check karo koi specific file exist karti hai ya nahi, 
+# aur current folder ke saare files list karo.
+
+import os 
+
+print(os.getcwd())
+print(os.path.exists(r"C:\git_repo\PYTHONE_CODE\PYTHON_CODE\MY_WORK\practice code.py\notes.txt"))
+print(os.listdir("."))
+
+
+
+
+# CODE 103 / 500 :
+
+# Ek try-except banao jisme except Exception as e: 
+# use karo (specific error type nahi), 
+# aur type(e).__name__ se pata karo exact kaunsa error aaya tha.
+
+try:
+    sum = 10 / 0
+except Exception as e:
+    print("error name -",type(e).__name__)
+
+
+
+
+
+# CODE 104 / 500 :
+
+# Same output do tarikon se print karo — purane .format() method se, aur f-string se. 
+# Dono compare karo.
+
+name = "raza"
+age = 18 
+
+old_way = "my name is {} and my age is {}".format(name,age)
+new_way = f"my name is {name} and my age is {age}"
+
+print(old_way)
+print(new_way)
+
+
+
+
+
+# CODE 105 / 500 :
+
+# Mini Project — Menu-driven Calculator — while True loop use karke ek calculator banao,
+# jisme user menu se choose kare (Add/Subtract/Multiply/Divide/Exit),
+# aur break se loop khatam ho.# 
+
+def add (a ,b): return a + b
+def subtract (a ,b): return a - b
+def multiply (a ,b): return a * b
+def divide (a ,b): return a / b
+
+while True :
+    print("/n1.add 2. subtract 3. multiply 4. divide 5. Exit")
+    choice = input("choice:")
+
+
+    if choice == "5" :
+        break
+
+
+    a = float(input("enter your first number :"))
+    b = float(input("enter your second number :"))
+
+
+    if choice == "1":
+        print("result :",add(a,b))
+
+    if choice == "2":
+            print("result :",subtract(a,b))
+
+    if choice == "3":
+            print("result :",multiply(a,b))
+
+    if choice == "4":
+            print("result :",divide(a,b))
+
+
+
+
+
+#               # DAY 22 # 
+
+
+# CODE 106 / 500 :
+
+# Ek function banao fibonacci(n) jo recursion use karke Fibonacci sequence ka n'th number nikale.
+
+def fibonacci(n):
+    if n <= 1 :
+        return n 
+
+    return fibonacci(n - 1) + fibonacci(n - 2)
+
+for i in range(8):
+    print(fibonacci(i),end="")
+
+
+
+
+
+# CODE 107 / 500 :
+
+# Upar wale Fibonacci function ko dictionary cache use karke optimize karo, 
+# taaki same values dobara calculate na hon.
+
+cache = {}
+
+def fibo_fast(n):
+
+    if n in cache:
+        return cache[n]
+    
+    if n <= 1 :
+        return n
+    
+    result = fibo_fast(n - 1) + fibo_fast(n - 2)
+    cache[n] = result
+    return result
+
+
+print(fibo_fast(0))
+
+
+
+
+
+# CODE 108 / 500 :
+
+# Teen sets banao. 
+# Unka union, intersection, aur difference nikalo (|, &, - operators se).
+
+a = {1, 2, 3}
+b = {2, 3, 4}
+c = {3, 4, 5}
+
+print(a|b|c)
+print(a&b&c)
+print(a-b-c)
+
+
+
+
+
+# CODE 109 / 500 :
+
+# Students ki list (dictionaries) banao jisme grade aur marks ho. 
+# sorted() ke key mein tuple use karke pehle grade se, phir marks se (descending) sort karo.
+
+student = [
+    {"name":"raza", "grade": "A", "marks": 94},
+    {"name":"akib", "grade": "A", "marks": 90},
+    {"name":"ayan", "grade": "B", "marks": 88}
+]
+
+result = sorted(student,key=lambda s :(s["grade"], -s["marks"]))
+for s in result:
+    print(s["grade"], s["marks"], s["name"])
+
+
+
+
+
+# # CODE 110 / 500 :
+
+# # Ek TodoList class banao jisme tasks priority number ke saath add hon. 
+# # Ek method banao jo tasks ko priority ke hisaab se sorted dikhaye.
+
+class TodoList:
+    def __init__(self):
+      self.tasks = []
+
+    def add_task(self,task,priority):
+         self.tasks.append({"task": task, "priority" : priority})
+
+    def show_sorted(self):
+        sorted_tasks = sorted(self.tasks, key=lambda t: t["priority"])
+        for t in sorted_tasks:
+            print(f"[Priority {t['priority']}] {t['task']}")
+
+
+todo = TodoList()
+todo.add_task("submit assigment", 1)
+todo.add_task("buy groceries", 2)
+todo.add_task("call client", 3)
+todo.show_sorted()
+
+
+
+
+
+#               # DAY 23 #
+
+
+# CODE 111 / 500 :
+
+# __repr__ vs __str__ #
+# — Point class mein dono methods add karo, alag-alag return karte hue. 
+# print(point) aur print([point]) try karke farak dekho.
+
+class point :
+    def __init__(self,x,y):
+        self.x = x
+        self.y = y
+
+    def __str__(self):
+        return f"point at ({self.x},{self.y})"
+    
+    def __repr__(self):
+        return f"point({self.x},{self.y})"
+
+    
+p = point(2,3)
+print(p)
+print([p])
+
+
+
+
+
+# CODE 112 / 500 :
+
+# functools.reduce() #
+# reduce() use karke ek list ke saare numbers ka product (multiplication) nikalo.
+
+from functools import reduce
+
+numbers = [1, 2, 3, 4, 5]
+result = reduce(lambda x,y : x*y,numbers)
+print(result)
+
+
+
+
+
+# CODE 113 / 500 :
+
+# itertools.permutations #
+# — permutations() use karke 3 items ki list se har possible 2-item combination (order matters) nikalo.
+
+from itertools import permutations
+
+items = ["A", "B", "C"]
+result = list(permutations(items,2))
+print(result)
+
+
+
+
+
+# CODE 114 / 500 :
+
+# Error Logging to File #
+# Ek try-except banao jisme error aaye toh uska message error_log.txt file mein append mode se save ho jaye.
+
+try:
+    sum = 10 / 0
+except ZeroDivisionError as e:
+    with open ("error_log.txt","a") as f :
+        f.write(f"Error: {e}\n")
+    print("Error saved in log file")
+
+
+# CODE 115 / 500 :
+
+# Mini Project — Multi-Account Bank System #
+# Account aur Bank classes banao. 
+# Bank mein multiple accounts ho (dictionary mein). 
+# Method transfer(from, to, amount) banao jo balance check karke paisa transfer kare.
+
+class Account:
+    def __init__(self,owner,balance=0):
+        self.owner = owner
+        self.balance = balance
+
+class Bank :
+
+    def __init__ (self):
+        self.account = {}
+
+    def create_account(self,owner):
+        self.account[owner] = Account(owner)
+
+    def transfer(self, from_owner, to_owner, amount):
+        if self.account[from_owner].balance < amount:
+            print("Insufficient balance")
+            return
+        self.account[from_owner].balance -= amount
+        self.account[to_owner].balance += amount
+        print(amount, "transfer complited from", from_owner, "to", to_owner)
+
+
+bank = Bank()
+bank.create_account("Raza")
+bank.create_account("Aman")
+bank.account["Raza"].balance = 1000
+
+bank.transfer("Raza", "Aman", 300)
+print(bank.account["Raza"].balance)
+print(bank.account["Aman"].balance)
