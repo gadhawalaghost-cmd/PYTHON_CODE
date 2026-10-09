@@ -2962,3 +2962,117 @@ bank.account["Raza"].balance = 1000
 bank.transfer("Raza", "Aman", 300)
 print(bank.account["Raza"].balance)
 print(bank.account["Aman"].balance)
+
+
+
+
+
+#               # DAY 24 #
+
+# CODE 116 / 500 :
+
+# Ek function banao jisme type hints use ho (def add(a: int, b: int) -> int:), 
+# aur normal se call karke test karo.
+
+
+def add (a: int, b: int) -> int:
+    return a + b
+
+print(add(5,6))
+
+
+
+
+
+# CODE 117 / 500 :
+
+# @dataclass decorator use karke ek Student class banao (bina manually __init__ likhe), 
+# object banake print karo.
+
+from dataclasses import dataclass
+
+@dataclass
+class student:
+    name : str
+    marks : int
+
+s1 = student("raza",94)
+print(s1)
+print("name -",s1.name,"marks -",s1.marks)
+
+
+
+
+
+# CODE 118 / 500 :
+
+# f-string mein alignment (<, >, ^) use karke kuch text ko left, right, center align karke print karo.
+
+name = "raza"
+score = 80
+
+print(f"{name:<10}|{score:>5}")
+print(f"{name:^15}")
+
+
+
+
+
+# CODE 119 / 500 :
+
+# — Ek list comprehension banao jisme do conditions ek saath ho,
+# (jaise number 3 se bhi divide ho aur 5 se bhi).
+
+numbers = range(1,31)
+
+result = [n for n in numbers if n % 3 == 0 if n %5 == 0]
+print(result)
+
+
+
+
+
+# CODE 120 / 500 :
+
+# Combined Quiz System — Ek Quiz class banao jisme questions ki list ho,
+# (dataclass use karke ek Question banao — text, options, answer). 
+# Method take_quiz() banao jo poora quiz chalaye aur end mein score bataye.
+
+from dataclasses import dataclass
+
+@dataclass
+class Question:
+    text : str
+    options : list
+    answer : str
+
+
+class Quiz:
+    def __init__(self):
+        self.question = []
+        self.score = 0
+
+    def add_question (self,question):
+        self.question.append(question)
+
+    def take_quiz(self):
+        for q in self.question:
+            print(q.text)
+
+            for i, opt in enumerate(q.options):
+                print(f"{i + 1}.{opt}")
+            user_answer = input("answer: ")
+
+            if user_answer.strip().lower() == q.answer.lower():
+                print("sahil!\n")
+                self.score += 1
+
+            else:
+                print("wrong. the correct answer is :",q.answer,"\n")
+        print("Final score: ", self.score , "/",len(self.question))
+
+quiz = Quiz()
+quiz.add_question(Question("Python kis type ki language hai?", ["Compiled", "Interpreted"], "Interpreted"))
+quiz.add_question(Question("List mutable hoti hai ya immutable?", ["Mutable", "Immutable"], "Mutable"))
+
+quiz.take_quiz()
