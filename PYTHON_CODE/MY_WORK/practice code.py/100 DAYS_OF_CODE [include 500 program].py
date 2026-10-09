@@ -2990,6 +2990,7 @@ print(add(5,6))
 # object banake print karo.
 
 from dataclasses import dataclass
+from typing import List
 
 @dataclass
 class student:
@@ -3032,18 +3033,18 @@ print(result)
 
 
 
-# CODE 120 / 500 :
+# # CODE 120 / 500 :
 
-# Combined Quiz System — Ek Quiz class banao jisme questions ki list ho,
-# (dataclass use karke ek Question banao — text, options, answer). 
-# Method take_quiz() banao jo poora quiz chalaye aur end mein score bataye.
+# # Combined Quiz System — Ek Quiz class banao jisme questions ki list ho,
+# # (dataclass use karke ek Question banao — text, options, answer). 
+# # Method take_quiz() banao jo poora quiz chalaye aur end mein score bataye.
 
 from dataclasses import dataclass
 
 @dataclass
 class Question:
     text : str
-    options : list
+    options : List[str]
     answer : str
 
 
